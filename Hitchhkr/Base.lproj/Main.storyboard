@@ -104,6 +104,7 @@
                                             </state>
                                             <connections>
                                                 <action selector="actionBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zNE-8z-Y0O"/>
+                                                <action selector="authBtnPressed:" destination="pKH-4i-IV4" eventType="touchUpInside" id="6Ye-ce-lhS"/>
                                             </connections>
                                         </button>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUu-k8-ZJm" customClass="RoundedCornerTextField" customModule="Hitchhkr" customModuleProvider="target">
@@ -153,6 +154,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lDg-ky-FQP"/>
                     </view>
+                    <connections>
+                        <outlet property="authBtn" destination="geo-Ib-4Qp" id="46h-DG-ZA4"/>
+                        <outlet property="emailField" destination="Yt1-sr-Snv" id="NGj-ko-6AG"/>
+                        <outlet property="passwordField" destination="hUu-k8-ZJm" id="YVk-bt-7Y6"/>
+                        <outlet property="segmentedControl" destination="LC2-4M-pxH" id="sAa-CD-brO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jOe-j4-u36" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

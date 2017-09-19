@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import Firebase
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
 
+    //outlets
+    @IBOutlet weak var emailField: RoundedCornerTextField!
+    
+    @IBOutlet weak var authBtn: RoundedShadowButton!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var passwordField: RoundedCornerTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.bindToKeyboard()
+        emailField.delegate = self
+        passwordField.delegate = self
+        
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap(sender:)))
         self.view.addGestureRecognizer(tap)
@@ -27,4 +38,59 @@ class LoginVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func authBtnPressed(_ sender: Any) {
+        if emailField.text != nil && passwordField.text != nil {
+            authBtn.animateButton(shouldLoad: true, withMessage: nil)
+            self.view.endEditing(true)
+            
+            if let email = emailField.text, let password = passwordField.text {
+                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
+                    if error == nil {  //is the user already existing in Firebase (yes)
+                        if let user = user {
+                            if self.segmentedControl.selectedSegmentIndex == 0 {
+                                let userData = ["provider": user.providerID] as [String: Any]
+                                DataService.instance.createFireBaseDBUser(uid: user.uid, userData: userData, isDriver: false)
+                            } else {
+                                let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
+                                DataService.instance.createFireBaseDBUser(uid: user.uid, userData: userData, isDriver: true)
+                            }
+                        }
+                        print("email user authenticated successfully with Firebase.")
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                            switch errorCode {
+                            case .invalidEmail: print("Email invalid. Please try again.")
+                            case .wrongPassword: print("That was the wrong password.")
+                            default: print("An unexpected error occured. Please try again.")
+                            }
+                        } //creating a new user when it does not exist in Firebase.
+                        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                            if error != nil {  //popup in case there is an error
+                                if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                                    switch errorCode {
+                                    case .invalidEmail: print("Email invalid. Please try again.")
+                                    case .emailAlreadyInUse: print("Email already in use. Please try again")
+                                    default: print("An unexpected error occured. Please try again.")
+                                    }
+                                } else {
+                                    if let user = user {
+                                        if self.segmentedControl.selectedSegmentIndex == 0 {
+                                            let userData = ["provider": user.providerID] as [String: Any]
+                                            DataService.instance.createFireBaseDBUser(uid: user.uid, userData: userData, isDriver: false)
+                                        } else {
+                                            let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnabled": false, "isDriverOnTrip": false] as [String: Any]
+                                            DataService.instance.createFireBaseDBUser(uid: user.uid, userData: userData, isDriver: true)
+                                        }
+                                    }
+                                    print("Successfully created a new user in Firebase.")
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            }
+                        })
+                    }
+                })
+            }
+        }
+    }
 }
