@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		528C60B4F43BCB9CE4EFED6A /* Pods_Hitchhkr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9DB8AC383EFCCBCBFB229C /* Pods_Hitchhkr.framework */; };
+		6C391A6F1F70E131002A3A3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CAE3A461F6EA5F100F1EF4A /* GoogleService-Info.plist */; };
 		6CAE3A391F6E225C00F1EF4A /* LeftSidePanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAE3A381F6E225C00F1EF4A /* LeftSidePanelVC.swift */; };
 		6CAE3A3B1F6E22D900F1EF4A /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAE3A3A1F6E22D900F1EF4A /* ContainerVC.swift */; };
 		6CAE3A3E1F6E260500F1EF4A /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAE3A3D1F6E260500F1EF4A /* CenterVCDelegate.swift */; };
@@ -35,6 +36,7 @@
 		6CAE3A401F6E408900F1EF4A /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		6CAE3A421F6E4A1400F1EF4A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6CAE3A441F6E935F00F1EF4A /* RoundedCornerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerTextField.swift; sourceTree = "<group>"; };
+		6CAE3A461F6EA5F100F1EF4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6CB616C11F6CCB390051CAA5 /* Hitchhkr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hitchhkr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB616C41F6CCB390051CAA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CB616C61F6CCB390051CAA5 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				6CB616C81F6CCB390051CAA5 /* Main.storyboard */,
 				6CB616CB1F6CCB390051CAA5 /* Assets.xcassets */,
 				6CB616CD1F6CCB390051CAA5 /* LaunchScreen.storyboard */,
+				6CAE3A461F6EA5F100F1EF4A /* GoogleService-Info.plist */,
 				6CB616D01F6CCB390051CAA5 /* Info.plist */,
 			);
 			path = Hitchhkr;
@@ -224,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CB616CF1F6CCB390051CAA5 /* LaunchScreen.storyboard in Resources */,
+				6C391A6F1F70E131002A3A3F /* GoogleService-Info.plist in Resources */,
 				6CB616CC1F6CCB390051CAA5 /* Assets.xcassets in Resources */,
 				6CB616CA1F6CCB390051CAA5 /* Main.storyboard in Resources */,
 			);
