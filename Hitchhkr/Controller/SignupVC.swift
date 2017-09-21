@@ -26,7 +26,15 @@ class SignupVC: UIViewController, UITextFieldDelegate {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap(sender:)))
         self.view.addGestureRecognizer(tap)
+        
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        if Auth.auth().currentUser != nil {
+//            dismiss(animated: true, completion: nil)
+//        }
+//    }
     
     @objc func handleScreenTap(sender: UITapGestureRecognizer) {
         self.view.endEditing(true)

@@ -13,9 +13,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 
     //outlets
     @IBOutlet weak var emailField: RoundedCornerTextField!
-    
     @IBOutlet weak var authBtn: RoundedShadowButton!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var passwordField: RoundedCornerTextField!
     
     override func viewDidLoad() {
@@ -39,43 +37,33 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func authBtnPressed(_ sender: Any) {
-//        if emailField.text != nil && passwordField.text != nil {
-//            authBtn.animateButton(shouldLoad: true, withMessage: nil)
-//            self.view.endEditing(true)
-//            
-//            if let email = emailField.text, let password = passwordField.text {
-//                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-//                    if error != nil {
-//                        if let errorCode = AuthErrorCode(rawValue: error!._code) {
-//                            switch errorCode {
-//                            case .invalidEmail: print("Email invalid. Please try again.")
-//                            case .wrongPassword: print("That was the wrong password.")
-//                            default: print("An unexpected error occured. Please try again.")
-//                            }
-//                        } else {
-//                            if let user = user {
-//                                if self.segmentedControl.selectedSegmentIndex == 0 {
-//                                    let userData = ["provider": user.providerID, "userIsDriver": false, "isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
-//                                    loginFireBaseDBUser(uid: user.uid, userData: userData, isDriver: false)
-//                                } else {
-//                                    let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnabled": false, "driverIsOnTrip": false] as [String: Any]
-//                                    DataService.instance.createFireBaseDBUser(uid: user.uid, userData: userData, isDriver: true)
-//                                }
-//                            }
-//                            print("email user authenticated successfully with Firebase.")
-//                            self.dismiss(animated: true, completion: nil)
-//                        }
-//                    }
-//                })
-//            }
-//        }
+        if emailField.text != nil && passwordField.text != nil {
+            authBtn.animateButton(shouldLoad: true, withMessage: nil)
+            self.view.endEditing(true)
+            
+            if let email = emailField.text, let password = passwordField.text {
+                loginUser(withEmail: email, andPassword: password, loginComplete: { (success, error) in
+                    self.dismiss(animated: true, completion: nil)
+                    print("Successfully registered User")
+                })
+                
+            }
+        }
     }
     
-    func loginFireBaseDBUser(uid: String, userData: Dictionary<String, Any>, isDriver: Bool) {
-        if isDriver {
-            DataService.sharedInstance.REF_DRIVERS.child(uid).updateChildValues(userData)  //if uid from phone is missing, Firebase will create one
-        } else {
-            DataService.sharedInstance.REF_USERS.child(uid).updateChildValues(userData)  //will create a user in Firebase
+    
+    func loginUser(withEmail email: String, andPassword password: String, loginComplete: @escaping CompletionHandler) {
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                    switch errorCode {
+                    case .invalidEmail: print("Email invalid. Please try again.")
+                    case .wrongPassword: print("That was the wrong password.")
+                    default: print("An unexpected error occured. Please try again.")
+                    }
+                }
+            }
+            loginComplete(true, nil)
         }
     }
 }
