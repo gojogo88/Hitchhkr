@@ -27,6 +27,7 @@
 		6CB616DE1F6CF4C10051CAA5 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB616DD1F6CF4C10051CAA5 /* RoundedShadowView.swift */; };
 		6CB616E01F6CF5BD0051CAA5 /* CircleVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB616DF1F6CF5BD0051CAA5 /* CircleVIew.swift */; };
 		6CB616E21F6CF87D0051CAA5 /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB616E11F6CF87D0051CAA5 /* RoundedShadowButton.swift */; };
+		6CB6D5C61F7339E9006DDDE9 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6D5C51F7339E9006DDDE9 /* SignupVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		6CB616DD1F6CF4C10051CAA5 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
 		6CB616DF1F6CF5BD0051CAA5 /* CircleVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleVIew.swift; sourceTree = "<group>"; };
 		6CB616E11F6CF87D0051CAA5 /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
+		6CB6D5C51F7339E9006DDDE9 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		AD9DB8AC383EFCCBCBFB229C /* Pods_Hitchhkr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hitchhkr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 				6CAE3A381F6E225C00F1EF4A /* LeftSidePanelVC.swift */,
 				6CAE3A3A1F6E22D900F1EF4A /* ContainerVC.swift */,
 				6CAE3A421F6E4A1400F1EF4A /* LoginVC.swift */,
+				6CB6D5C51F7339E9006DDDE9 /* SignupVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				6C391A751F70E5D5002A3A3F /* Constants.swift in Sources */,
 				6CB616C71F6CCB390051CAA5 /* HomeVC.swift in Sources */,
 				6CAE3A3B1F6E22D900F1EF4A /* ContainerVC.swift in Sources */,
+				6CB6D5C61F7339E9006DDDE9 /* SignupVC.swift in Sources */,
 				6CAE3A411F6E408900F1EF4A /* UIViewExt.swift in Sources */,
 				6CB616DC1F6CF4160051CAA5 /* RoundImageView.swift in Sources */,
 				6CB616E01F6CF5BD0051CAA5 /* CircleVIew.swift in Sources */,

@@ -12,3 +12,4 @@ import Firebase
 //URL Constants
 let DB_BASE = Database.database().reference()
 
+typealias CompletionHandler = (_ Success: Bool, _ error: Error?) -> ()

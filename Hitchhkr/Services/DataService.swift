@@ -12,8 +12,9 @@ import Firebase
 
 
 class DataService {
-    static let instance = DataService()
+    static let sharedInstance = DataService()
     //static - when its instantiated, it is available for the entire lifecyle of the app. We can aceess it from anywhere in the app
+    private init() {}
     
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")  //adding a table in the DB (like a folder in a dir)
@@ -34,14 +35,5 @@ class DataService {
     
     var REF_TRIPS: DatabaseReference {
         return _REF_TRIPS
-    }
-    
-    //to create a FireBase user, we need to pass in a UID, dictionary of user data (email, acct type, pswd), property to check if they are a driver, property to see if they are on a trip or not...
-    func createFireBaseDBUser(uid: String, userData: Dictionary<String, Any>, isDriver: Bool) {
-        if isDriver {  //will create a driver in Firebase
-            REF_DRIVERS.child(uid).updateChildValues(userData)  //if uid from phone is missing, Firebase will create one
-        } else {
-            REF_USERS.child(uid).updateChildValues(userData)  //will create a user in Firebase
-        }
     }
 }
