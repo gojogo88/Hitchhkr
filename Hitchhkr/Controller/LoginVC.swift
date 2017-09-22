@@ -62,8 +62,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     default: print("An unexpected error occured. Please try again.")
                     }
                 }
+                loginComplete(false, error)
+            } else {
+                loginComplete(true, nil)
             }
-            loginComplete(true, nil)
         }
     }
 }

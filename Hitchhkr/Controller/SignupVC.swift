@@ -74,6 +74,7 @@ class SignupVC: UIViewController, UITextFieldDelegate {
                     default: print("An unexpected error occured. Please try again.")
                     }
                 }
+                userCreationComplete(false, error)
             } else {
             
                 //if a user is returned, we need a constant to hold all the info for the user.  If not, we will handle any errors that we get
@@ -89,8 +90,8 @@ class SignupVC: UIViewController, UITextFieldDelegate {
                     let userData = ["provider": user.providerID, "userIsDriver": true, "isPickupModeEnabled": false, "isDriverOnTrip": false] as [String: Any]
                     self.createFireBaseDBUser(uid: user.uid, userData: userData, isDriver: true)
                 }
+                userCreationComplete(true, nil)
             }
-            userCreationComplete(true, nil)
         }
     }
     
